@@ -6,7 +6,7 @@ every change, see the Git log.
 
 Latest
 ------
-* tbd
+* Minor: Added optional extra test command to pass from calling workflow
 
 1.0.0
 -----

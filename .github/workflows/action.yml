@@ -6,8 +6,13 @@ on:
         description: "Extra Resolve Options"
         type: string
         required: false
+      extra_test_command:
+        description: "Extra Test Command"
+        type: string
+        required: false
 env:
   EXTRA_RESOLVE_OPTIONS: ${{ github.event.inputs.extra_resolve_options }}
+  EXTRA_TEST_COMMAND: ${{ github.event.inputs.extra_test_command }}
 jobs:
   docker_builds:
     strategy:
@@ -53,4 +58,4 @@ jobs:
           echo "::add-matcher::.github/gcc-problem-matcher.json"
           python3 waf
       - name: Waf Test
-        run: python3 waf --run_tests
+        run: python3 waf --run_tests --run_cmd="%s $EXTRA_TEST_COMMAND"
