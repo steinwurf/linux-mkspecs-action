@@ -13,10 +13,11 @@ jobs:
             cxx_mkspec: --cxx_mkspec=cxx_gxx112_x64
             name: GCC 11.2
           - container: ghcr.io/steinwurf/gcc-6.3.0:1.0.0
-            cxx_mkspec: --cxx_mkspec=cxx_gxx93_x64
+            cxx_mkspec: --cxx_mkspec=cxx_gxx63_x64
             name: GCC 6.3
           - container: ghcr.io/steinwurf/clang-3.9:1.0.0
             name: Clang 3.9
+            cxx_mkspec: --cxx_mkspec=cxx_clang39_x64
           - container: ghcr.io/steinwurf/clang-13:1.0.0
             name: Clang 13
             cxx_mkspec: --cxx_mkspec=cxx_clang130_x64
