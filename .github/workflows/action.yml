@@ -6,8 +6,10 @@ on:
         description: "Extra Resolve Options"
         type: string
         required: false
-env:
-  EXTRA_RESOLVE_OPTIONS: ${{ github.event.inputs.extra_resolve_options }}
+      extra_test_command:
+        description: "Extra Test Command"
+        type: string
+        required: false
 jobs:
   docker_builds:
     strategy:
@@ -47,10 +49,14 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
       - name: Waf Configure
-        run: python3 waf configure --git_protocol=git@ ${{ matrix.config.cxx_mkspec }} $EXTRA_RESOLVE_OPTIONS
+        env:
+          EXTRA_RESOLVE_OPTIONS: ${{ inputs.extra_resolve_options }}
+        run: python3 waf configure --git_protocol=git@ ${{ matrix.config.cxx_mkspec }} ${{ env.EXTRA_RESOLVE_OPTIONS }}
       - name: Waf Build
         run: |
           echo "::add-matcher::.github/gcc-problem-matcher.json"
           python3 waf
       - name: Waf Test
-        run: python3 waf --run_tests
+        env:
+          EXTRA_TEST_COMMAND: ${{ inputs.extra_test_command }}
+        run: python3 waf --run_tests --run_cmd="%s $EXTRA_TEST_COMMAND"
