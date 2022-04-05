@@ -52,7 +52,10 @@ jobs:
       - name: Waf Configure
         env:
           EXTRA_RESOLVE_OPTIONS: ${{ inputs.extra_resolve_options }}
-        run: python3 waf configure --git_protocol=git@ ${{ matrix.config.cxx_mkspec }} ${{ env.EXTRA_RESOLVE_OPTIONS }}
+        uses: nick-fields/retry@v2
+        with:
+          max_attempts: 3
+          command: python3 waf configure --git_protocol=git@ ${{ matrix.config.cxx_mkspec }} ${{ env.EXTRA_RESOLVE_OPTIONS }}
       - name: Waf Build
         run: |
           echo "::add-matcher::.github/gcc-problem-matcher.json"
