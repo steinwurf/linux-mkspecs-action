@@ -33,7 +33,7 @@ jobs:
             cxx_mkspec: --cxx_mkspec=cxx_clang13_address_sanitizer_x64
             name: Clang 13 Address Sanitizer
           - container: ghcr.io/steinwurf/clang-13-msan:latest
-            cxx_mkspec: --cxx_mkspec=cxx_clang10_memory_sanitizer_x64 --commonflags="$MSAN_COMMONFLAGS" --linkflags="$MSAN_LINKFLAGS"
+            cxx_mkspec: --cxx_mkspec=cxx_clang13_memory_sanitizer_x64 --commonflags="$MSAN_COMMONFLAGS" --linkflags="$MSAN_LINKFLAGS"
             name: Clang 13 Memory Sanitizer
           - container: ghcr.io/steinwurf/clang-13:1.0.0
             cxx_mkspec: --cxx_mkspec=cxx_clang13_thread_sanitizer_x64
