@@ -27,10 +27,10 @@ jobs:
           - container: ghcr.io/steinwurf/clang-3.9:1.0.0
             name: Clang 3.9
             cxx_mkspec: --cxx_mkspec=cxx_clang39_x64
-          - container: ghcr.io/steinwurf/clang-13:1.0.0
+          - container: ghcr.io/steinwurf/clang-15:latest
             name: Clang 15
             cxx_mkspec: --cxx_mkspec=cxx_default
-          - container: ghcr.io/steinwurf/clang-15:latest
+          - container: ghcr.io/steinwurf/clang-13:1.0.0
             cxx_mkspec: --cxx_mkspec=cxx_clang13_address_sanitizer_x64
             name: Clang 13 Address Sanitizer
           - container: ghcr.io/steinwurf/clang-13:1.0.0
