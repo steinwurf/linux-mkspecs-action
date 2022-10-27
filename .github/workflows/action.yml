@@ -19,7 +19,7 @@ jobs:
       matrix:
         config:
           - container: ghcr.io/steinwurf/gcc-12:latest
-            cxx_mkspec: --cxx_mkspec=cxx_default
+            cxx_mkspec: --cxx_mkspec=cxx_gxx122_x64
             name: GCC 12
           - container: ghcr.io/steinwurf/gcc-6.3.0:1.0.0
             cxx_mkspec: --cxx_mkspec=cxx_gxx63_x64
@@ -29,13 +29,13 @@ jobs:
             cxx_mkspec: --cxx_mkspec=cxx_clang39_x64
           - container: ghcr.io/steinwurf/clang-15:latest
             name: Clang 15
-            cxx_mkspec: --cxx_mkspec=cxx_default
-          - container: ghcr.io/steinwurf/clang-13:1.0.0
-            cxx_mkspec: --cxx_mkspec=cxx_clang13_address_sanitizer_x64
-            name: Clang 13 Address Sanitizer
-          - container: ghcr.io/steinwurf/clang-13:1.0.0
-            cxx_mkspec: --cxx_mkspec=cxx_clang13_thread_sanitizer_x64
-            name: Clang 13 Thread Sanitizer
+            cxx_mkspec: --cxx_mkspec=cxx_clang150_x64
+          - container: ghcr.io/steinwurf/clang-15:latest
+            cxx_mkspec: --cxx_mkspec=cxx_clang15_address_sanitizer_x64
+            name: Clang 15 Address Sanitizer
+          - container: ghcr.io/steinwurf/clang-15:latest
+            cxx_mkspec: --cxx_mkspec=cxx_clang15_thread_sanitizer_x64
+            name: Clang 15 Thread Sanitizer
     runs-on: [self-hosted, docker, builder]
     name: ${{ matrix.config.name }}
     container:
