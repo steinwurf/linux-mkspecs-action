@@ -18,24 +18,24 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - container: ghcr.io/steinwurf/gcc-11.2.0:1.0.0
-            cxx_mkspec: --cxx_mkspec=cxx_gxx112_x64
-            name: GCC 11.2
+          - container: ghcr.io/steinwurf/gcc-12:1.0.0
+            cxx_mkspec: --cxx_mkspec=cxx_gxx122_x64
+            name: GCC 12
           - container: ghcr.io/steinwurf/gcc-6.3.0:1.0.0
             cxx_mkspec: --cxx_mkspec=cxx_gxx63_x64
             name: GCC 6.3
           - container: ghcr.io/steinwurf/clang-3.9:1.0.0
             name: Clang 3.9
             cxx_mkspec: --cxx_mkspec=cxx_clang39_x64
-          - container: ghcr.io/steinwurf/clang-13:1.0.0
-            name: Clang 13
-            cxx_mkspec: --cxx_mkspec=cxx_clang130_x64
-          - container: ghcr.io/steinwurf/clang-13:1.0.0
-            cxx_mkspec: --cxx_mkspec=cxx_clang13_address_sanitizer_x64
-            name: Clang 13 Address Sanitizer
-          - container: ghcr.io/steinwurf/clang-13:1.0.0
-            cxx_mkspec: --cxx_mkspec=cxx_clang13_thread_sanitizer_x64
-            name: Clang 13 Thread Sanitizer
+          - container: ghcr.io/steinwurf/clang-15:1.0.0
+            name: Clang 15
+            cxx_mkspec: --cxx_mkspec=cxx_clang150_x64
+          - container: ghcr.io/steinwurf/clang-15:1.0.0
+            cxx_mkspec: --cxx_mkspec=cxx_clang15_address_sanitizer_x64
+            name: Clang 15 Address Sanitizer
+          - container: ghcr.io/steinwurf/clang-15:1.0.0
+            cxx_mkspec: --cxx_mkspec=cxx_clang15_thread_sanitizer_x64
+            name: Clang 15 Thread Sanitizer
     runs-on: [self-hosted, docker, builder]
     name: ${{ matrix.config.name }}
     container:
@@ -45,7 +45,7 @@ jobs:
         - /home/buildbot/.ssh:/root/.ssh
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Waf Configure
         env:
           EXTRA_RESOLVE_OPTIONS: ${{ inputs.extra_resolve_options }}
