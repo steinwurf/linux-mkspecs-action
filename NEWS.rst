@@ -8,6 +8,11 @@ Latest
 ------
 * tbd
 
+6.0.0
+-----
+* Major: upgraded to clang-15 and gcc-12
+* Major: upgraded actions/checkout to v3
+
 5.0.0
 -----
 * Major: No Memory-sanitizer workflow
