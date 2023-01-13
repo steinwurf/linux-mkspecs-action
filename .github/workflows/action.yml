@@ -3,7 +3,7 @@ on:
   workflow_call:
     inputs:
       preparation_commands:
-        description: "Commands to run prepare the build"
+        description: "Commands to run to prepare the build"
         required: false
         type: string
         default: ''
