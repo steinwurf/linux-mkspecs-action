@@ -70,3 +70,9 @@ jobs:
         env:
           TEST_COMMAND: ${{ inputs.test_command }}
         run: ${{ env.TEST_COMMAND }}
+
+# Cancel previous in-progress when pushing: https://stackoverflow.com/a/72408109
+concurrency:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
