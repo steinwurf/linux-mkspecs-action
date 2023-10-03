@@ -6,7 +6,7 @@ every change, see the Git log.
 
 Latest
 ------
-* tbd
+* Major: Update old compilers to Clang-5 and GCC-7
 
 6.1.0
 -----
