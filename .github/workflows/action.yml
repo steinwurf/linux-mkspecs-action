@@ -11,8 +11,6 @@ on:
         type: string
         required: false
         default: python3 waf --run_tests
-env:
-  EXTRA_RESOLVE_OPTIONS: ${{ github.event.inputs.extra_resolve_options }}
 jobs:
   docker_builds:
     timeout-minutes: 45
@@ -49,10 +47,12 @@ jobs:
         uses: actions/checkout@v3
       - name: Waf Configure
         uses: nick-fields/retry@v2
+        env:
+          EXTRA_RESOLVE_OPTIONS: ${{ inputs.extra_resolve_options }}
         with:
           max_attempts: 3
           timeout_minutes: 15
-          command: python3 waf configure --git_protocol=git@ ${{ matrix.config.cxx_mkspec }} $EXTRA_RESOLVE_OPTIONS
+          command: python3 waf configure --git_protocol=git@ ${{ matrix.config.cxx_mkspec }} ${{ env.EXTRA_RESOLVE_OPTIONS }}
       - name: Waf Build
         run: |
           echo "::add-matcher::.github/gcc-problem-matcher.json"
