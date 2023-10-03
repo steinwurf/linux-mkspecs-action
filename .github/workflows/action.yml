@@ -18,7 +18,8 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - cxx_mkspec: --cxx_mkspec=cxx_gxx122_x64
+          - container: ghcr.io/steinwurf/gcc-12:1.0.0
+            cxx_mkspec: --cxx_mkspec=cxx_gxx122_x64
             name: GCC 12
           - container: ghcr.io/steinwurf/gcc-7:1.0.0
             cxx_mkspec: --cxx_mkspec=cxx_default
