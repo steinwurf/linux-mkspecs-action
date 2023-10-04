@@ -26,7 +26,7 @@ jobs:
             name: GCC 7
           - container: ghcr.io/steinwurf/clang-6:1.0.0
             name: Clang 6
-            cxx_mkspec: --cxx_mkspec=cxx_clang50_x64
+            cxx_mkspec: --cxx_mkspec=cxx_clang60_x64
           - container: ghcr.io/steinwurf/clang-15:1.0.0
             name: Clang 15
             cxx_mkspec: --cxx_mkspec=cxx_clang150_x64
