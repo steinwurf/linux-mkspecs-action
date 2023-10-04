@@ -18,14 +18,15 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - cxx_mkspec: --cxx_mkspec=cxx_gxx122_x64
+          - container: ghcr.io/steinwurf/gcc-12:1.0.0
+            cxx_mkspec: --cxx_mkspec=cxx_gxx122_x64
             name: GCC 12
-          - container: ghcr.io/steinwurf/gcc-6.3.0:1.0.0
-            cxx_mkspec: --cxx_mkspec=cxx_gxx63_x64
-            name: GCC 6.3
-          - container: ghcr.io/steinwurf/clang-3.9:1.0.0
-            name: Clang 3.9
-            cxx_mkspec: --cxx_mkspec=cxx_clang39_x64
+          - container: ghcr.io/steinwurf/gcc-7:1.0.0
+            cxx_mkspec: --cxx_mkspec=cxx_default
+            name: GCC 7
+          - container: ghcr.io/steinwurf/clang-6:1.0.0
+            name: Clang 6
+            cxx_mkspec: --cxx_mkspec=cxx_clang60_x64
           - container: ghcr.io/steinwurf/clang-15:1.0.0
             name: Clang 15
             cxx_mkspec: --cxx_mkspec=cxx_clang150_x64
@@ -46,9 +47,9 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v3
       - name: Waf Configure
+        uses: nick-fields/retry@v2
         env:
           EXTRA_RESOLVE_OPTIONS: ${{ inputs.extra_resolve_options }}
-        uses: nick-fields/retry@v2
         with:
           max_attempts: 3
           timeout_minutes: 15
