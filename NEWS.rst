@@ -6,7 +6,7 @@ every change, see the Git log.
 
 Latest
 ------
-* tbd
+* Major: Update Clang-6 and Clang-11
 
 7.0.0
 -----
