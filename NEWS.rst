@@ -6,7 +6,7 @@ every change, see the Git log.
 
 Latest
 ------
-* tbd
+* Patch: Fix clang-11 to use correct mkspec.
 
 8.0.0
 -----
